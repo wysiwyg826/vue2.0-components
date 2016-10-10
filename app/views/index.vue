@@ -17,7 +17,8 @@
     <transition name="fade">
       <p v-if="show">hello</p>
     </transition>
-    <wButton class="btn" @btnClick="add" >提交</wButton>
+    <wButton class="btn" @btnClick="add" :disabled="false" v-wave>button</wButton>
+
   </div>
 </template>
 <script>
