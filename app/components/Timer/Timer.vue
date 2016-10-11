@@ -5,7 +5,7 @@
  * @Date:    2016-10-11 09:18:59
  * @File:    Timer.vue
  * @Last modified by:   wysiwyg826
- * @Last Modified time: 2016-10-11 17:50:42
+ * @Last Modified time: 2016-10-11 21:12:24
  * @Description: 时间选择组件
 -->
 <style scoped lang="scss">
@@ -112,7 +112,9 @@ export default {
         fhour: function() {
             if (this.isNumber(this.hour)) return NaN;
             // if()
-            return this.hour;
+            let c = document.getElementById("watch-body");
+            
+            return  NaN;
         }
     },
     data: () => ({
@@ -122,7 +124,11 @@ export default {
     methods: {
         initWatch: function() {
             let c = document.getElementById("watch-body");
-            cwatch(c)
+            const _this = this;
+            cwatch(c, function(data){
+                console.log("data:",data);
+                _this.hour = data
+            })
         },
         isNumber: function(num) {
             return isNaN(Number(num));
