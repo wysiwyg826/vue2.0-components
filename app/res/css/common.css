@@ -1,0 +1,21 @@
+/* charset:  utf-8
+ * @Author:  wysiwyg826
+ * @Email:   wysiwyg826@gmail.com
+ * @Date:    2016-10-11 11:49:00
+ * @File:    common.css
+ * @Last modified by:   wysiwyg826
+ * @Last Modified time: 2016-10-11 14:49:24
+ * @Description: 
+ */
+html, body {
+	font-size: 14px;
+	font-family: "Roboto", sans-serif;
+	background-color: #f7f7f7;
+}
+
+div, input, a, ul, li {
+	outline: 0;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}

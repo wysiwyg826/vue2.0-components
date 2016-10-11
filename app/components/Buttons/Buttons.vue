@@ -6,7 +6,6 @@
 
 .w-button {
   position: relative;
-  font-family: "Roboto", sans-serif;
   display: inline-block;
   overflow: hidden;
   color: #FFFFFF;
@@ -38,15 +37,14 @@ export default {
   props: {
     disabled: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
-  data: () => ({
-  }),
+  data: () => ({}),
   methods: {
     btnClick: function(e) {
       if (!e) return false;
-      if (this.disabled === true) {
+      if (this.disabled === false) {
         this.$emit('btnClick')
       }
     }

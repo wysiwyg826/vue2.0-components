@@ -18,47 +18,50 @@
       <p v-if="show">hello</p>
     </transition>
     <wButton class="btn" @btnClick="add" :disabled="false" v-wave>button</wButton>
-
+    <timer ></timer>
   </div>
 </template>
 <script>
 import wButton from './../components/Buttons/Buttons'
+import timer from './../components/Timer/Timer'
 export default {
   components:{
-    wButton
+    wButton,
+    timer
   },
   methods: {
     add: function() {
-      console.log('func add');
+      console.log('func add', this.atime);
     }
   },
   data: () => ({
+    atime:"19:03:12",
     val: 0,
     show: true
   }),
   beforeCreate: function() {
-    console.log('beforeCreate');
+    // console.log('beforeCreate');
   },
   created: function() {
-    console.log('created');
+    // console.log('created');
   },
   beforeMount: function() {
-    console.log('beforeMount');
+    // console.log('beforeMount');
   },
   mounted: function() {
-    console.log('mounted1');
+    // console.log('mounted1');
   },
   beforeUpdate: function() {
-    console.log('beforeUpdate');
+    // console.log('beforeUpdate');
   },
   updated: function() {
-    console.log('updated');
+    // console.log('updated');
   },
   beforeDestroy: function() {
-    console.log('beforeDestory');
+    // console.log('beforeDestory');
   },
   destroyed: function() {
-    console.log('destroyed');
+    // console.log('destroyed');
   }
 }
 </script>

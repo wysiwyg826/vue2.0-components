@@ -5,7 +5,7 @@
  * @Date:    2016-10-09 14:29:53
  * @File:    index.js
  * @Last modified by:   wysiwyg826
- * @Last Modified time: 2016-10-10 09:49:59
+ * @Last Modified time: 2016-10-11 13:22:30
  */
 
 import Vue from 'vue';
@@ -13,7 +13,7 @@ import vueResource from 'vue-resource';
 import vueRouter from 'vue-router';
 
 import './directives/wave'
-
+import './res/css/common.css'
 Vue.use(vueResource);
 Vue.use(vueRouter);
 
