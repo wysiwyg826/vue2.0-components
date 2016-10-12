@@ -18,7 +18,7 @@
       <p v-if="show">hello</p>
     </transition>
     <wButton class="btn" @btnClick="add" :disabled="false" v-wave>button</wButton>
-    <timer ></timer>
+    <timer :time="atime" v-model="atime"></timer>
   </div>
 </template>
 <script>
@@ -32,6 +32,9 @@ export default {
   methods: {
     add: function() {
       console.log('func add', this.atime);
+    },
+    gettime: function(time){
+      console.log("time", time)
     }
   },
   data: () => ({
