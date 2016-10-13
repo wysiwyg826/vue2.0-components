@@ -5,7 +5,7 @@
  * @Date:    2016-10-11 09:18:59
  * @File:    Timer.vue
  * @Last modified by:   wysiwyg826
- * @Last Modified time: 2016-10-12 13:13:09
+ * @Last Modified time: 2016-10-13 10:37:42
  * @Description: 时间选择组件
 -->
 <style scoped lang="scss">
@@ -22,20 +22,21 @@
 }
 
 .timer {
-    transform: scale(1, 1);
-    position: relative;
     height: 36px;
-    display: inline-block;
-    width: auto;
+    width: 300px;
     box-sizing: border-box;
+    overflow: hidden;
     .timer-input {
+        float: left;
         outline: none;
         border: none;
         color: #868686;
+        text-align: center;
         margin: 0;
         padding: 0;
         height: 100%;
-        font-size: 1.1rem;
+        width: 160px;
+        font-size: 24px;
         border-bottom: 2px solid #2979ff;
         &:disabled {
             user-select: none;
@@ -44,10 +45,15 @@
     }
     .icon {
         cursor: pointer;
-        display: inline-block;
-        height: 36px;
-        width: 36px;
-        outline: 1px solid red;
+        float: left;
+        height: 32px;
+        width: 32px;
+        background: url('./time.png') no-repeat center;
+        border-bottom-right-radius: 16px;
+        border-top-right-radius: 16px;
+        border-right: 2px solid #2979ff;
+        border-bottom: 2px solid #2979ff;
+        border-top: 2px solid #2979ff;
     }
     .timeShow {
         background-color: #fbfbfb;
@@ -55,6 +61,10 @@
         height: 420px;
         width: 300px;
         box-shadow: 0 0 3px rgba(12, 12, 12, .3);
+        position: fixed;
+        z-index: 9999;
+        left:0px;
+        top: 0px;
         .header {
             padding: 20px;
             height: 80px;
@@ -108,8 +118,8 @@
 <template>
     <div class="timer">
         <input class="timer-input" type="text" name="time" disabled="true" v-model="time">
-        <span @click="pickTime($event)" class="icon">time</span>
-        <div class="timeShow" v-show="show">
+        <span @click="pickTime($event)" class="icon"></span>
+        <div class="timeShow" v-show="show" :style="{left: sx+'px', top:sy+'px'}">
             <div class="header">
                 <span class="hour">{{hour}}</span>
                 <span class="mid">:</span>
@@ -143,7 +153,9 @@ export default {
         }
     },
     data: () => ({
-        mTime:null,
+        sx:0,
+        sy:0,
+        mTime: null,
         show: false,
         hour: 0,
         min: 0,
@@ -156,6 +168,7 @@ export default {
             const _this = this;
             this.type = 1;
             this.watch = new cwatch(c, function(data) {
+                console.log(data);
                 _this.type === 1 ? (_this.hour = data) : (_this.min = data)
             })
         },
@@ -170,6 +183,10 @@ export default {
             this.watch.change(this.type);
         },
         preBtn: function() {
+            if (this.type === 1) {
+                this.show = false;
+                this.watch.change(3); //清空定时器
+            }
             if (this.type < 2) return false;
             --this.type;
             this.watch.change(this.type);
@@ -187,13 +204,15 @@ export default {
                 this.min = time.getMinutes();
             }
         },
-        returnTime: function(){
-            this.time = this.hour+":"+this.min;
+        returnTime: function() {
+            this.time = this.hour + ":" + this.min;
         },
         pickTime: function(e) {
-
             this.initWatch();
+            this.type = 1;
             this.show = true;
+            this.sx = e.clientX - e.offsetX -160;
+            this.sy = e.clientY + 36 - e.offsetY;
         }
     },
     mounted: function() {

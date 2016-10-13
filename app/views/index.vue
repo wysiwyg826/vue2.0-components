@@ -11,13 +11,17 @@
 </style>
 <template>
   <div id="demo">
-    <button v-on:click="show = !show">
+   <!--  <button v-on:click="show = !show">
       Toggle
     </button>
     <transition name="fade">
       <p v-if="show">hello</p>
     </transition>
     <wButton class="btn" @btnClick="add" :disabled="false" v-wave>button</wButton>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p> -->
     <timer :time="atime" v-model="atime"></timer>
   </div>
 </template>

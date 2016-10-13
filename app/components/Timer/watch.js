@@ -4,7 +4,7 @@
      * @Date:    2016-10-11 15:27:35
      * @File:    watch.js
      * @Last modified by:   wysiwyg826
-     * @Last Modified time: 2016-10-12 12:09:46
+     * @Last Modified time: 2016-10-13 09:59:05
      * @Description: 
      */
 
@@ -17,7 +17,7 @@
     })();
 
     function cwatch(c, callback) {
-        const color_bg = "#d32f2f";
+        const color_bg = "#2979ff";
         const color_font = "#fafafa";
         const el = c;
         const eWidth = c.width;
